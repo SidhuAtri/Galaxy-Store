@@ -1,0 +1,62 @@
+<header>
+  <div class="navbar navbar-dark bg-dark shadow-sm px-5 py-3">
+    <div class="navbar-brand align-item-center d-flex">
+      <i style="font-size: 30px" class="fas fa-store">&nbsp; </i>
+      <a style="text-decoration: none; color: white" [routerLink]="['/home']"
+        ><strong style="font-size: 20px">Galaxy Store</strong></a
+      >
+
+      <div class="form-group text-center">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="search products"
+          [(ngModel)]="searchTerm"
+          (keyup)="search($event)"
+        />
+      </div>
+      <span class="fas fa-search search-icon"></span>
+    </div>
+    <div class="nav-custom">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link text-light fw-bold" [routerLink]="['/home']"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light fw-bold" [routerLink]="['/products']"
+            >Products</a
+          >
+        </li>
+        <li *ngIf="flagLogout" class="nav-item">
+          <a
+            style="cursor: pointer"
+            class="nav-link text-light fw-bold"
+            [routerLink]="['/orders']"
+            >Orders</a
+          >
+        </li>
+        <li *ngIf="!flagLogout" class="nav-item">
+          <a class="nav-link text-light fw-bold" [routerLink]="['/login']"
+            >log in</a
+          >
+        </li>
+        <li *ngIf="flagLogout" class="nav-item">
+          <a
+            style="cursor: pointer"
+            class="nav-link text-light fw-bold"
+            (click)="logout()"
+            >log out</a
+          >
+        </li>
+      </ul>
+    </div>
+    <button *ngIf="flagLogout" routerLink="cart" class="btn btn-dark">
+      <i style="font-size: 22px" class="fas fa-shopping-cart"></i>
+      <div style="font-size: 10px" class="badge bg-primary">
+        {{ totalItem }}
+      </div>
+    </button>
+  </div>
+</header>

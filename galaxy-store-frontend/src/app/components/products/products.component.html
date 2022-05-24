@@ -1,0 +1,145 @@
+<div class="card-top mt-2 pt-2">
+  <div class="container d-flex justify-content-center">
+    <div class="item">
+      <a (click)="filter('')">
+        <img src="../../../assets/img/all.png" alt="" />
+        <h6 class="py-1 m-0">All products</h6>
+      </a>
+    </div>
+    <div class="item">
+      <a (click)="filter('electronics')">
+        <img src="../../../assets/img/electronics.png" alt="" />
+        <h6 class="py-1">Electronics</h6>
+      </a>
+    </div>
+    <div class="item">
+      <a (click)="filter('fashion')">
+        <img src="../../../assets/img/fashion.png" alt="" />
+        <h6 class="py-1">Fashion</h6>
+      </a>
+    </div>
+    <div class="item">
+      <a (click)="filter('jewelery')">
+        <img src="../../../assets/img/jewellary.png" alt="" />
+        <h6 class="py-1">Jewllery</h6>
+      </a>
+    </div>
+    <div class="item">
+      <a>
+        <img src="../../../assets/img/mobile.png" alt="" />
+        <h6 class="py-1">Footwear</h6>
+      </a>
+    </div>
+    <div class="item">
+      <a>
+        <img c src="../../../assets/img/footwear.png" alt="" />
+        <h6 class="py-1">Footwear</h6>
+      </a>
+    </div>
+    <div class="item">
+      <a>
+        <img src="../../../assets/img/books.png" alt="" />
+        <h6 class="py-1">Books</h6>
+      </a>
+    </div>
+    <div class="item">
+      <a>
+        <img src="../../../assets/img/toys.png" alt="" />
+        <h6 class="py-1">Sports</h6>
+      </a>
+    </div>
+    <div class="item">
+      <a>
+        <img src="../../../assets/img/travel.png" alt="" />
+        <h6 class="py-1">Travel</h6>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid d-flex products mt-2">
+  <div class="p-4 col-2">
+    <h4 class="text-light"></h4>
+    <div class="w-100">
+      <h5 class="text-light">Price</h5>
+      <p class="text-light d-flex">
+        <input
+          type="range"
+          class="form-range"
+          min="10"
+          max="1000"
+          id="customRange2"
+          name="price"
+          value="50"
+          oninput="this.nextElementSibling.value = this.value"
+          (input)="priceFilter($event.target)"
+        />
+        &nbsp;
+        <output>50</output>
+      </p>
+    </div>
+    <br />
+    <div>
+      <h5 class="text-light">Ratings</h5>
+      <div class="d-flex justify-content-start">
+        <ul
+          class="list-inline rating-list"
+          *ngFor="let star of stars"
+          style="display: inline-block"
+        >
+          <li
+            (click)="ratingFilter(star)"
+            [ngClass]="{ selected: star <= selectedValue }"
+          >
+            <i class="fa fa-star"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <ng-container
+      *ngFor="let item of filterCategory | filter: searchKey:'title'"
+    >
+      <div class="card col-md-2">
+        <img src="{{ item.image }}" alt="" />
+        <h5
+          class="text-center fw-bold"
+          style="
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100ch;
+          "
+        >
+          {{ item.title }}
+        </h5>
+        <!-- <p
+          style="
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+          "
+        >
+          {{ item.description }}
+        </p> -->
+        <p>
+          <span class="fa fa-star checked"></span> {{ item.rate }}
+          <span
+            ><a href="#">({{ item.count }})</a></span
+          >
+        </p>
+        <p><strong>Price:</strong> ${{ item.price }}</p>
+        <div class="d-flex justify-content-around">
+          <button class="btn btn-warning p-1" (click)="addtocart(item)">
+            Add to Cart
+          </button>
+          <button class="btn btn-primary" (click)="viewProduct(item.id)">
+            View
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

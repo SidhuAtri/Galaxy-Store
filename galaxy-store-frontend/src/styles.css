@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+body {
+  animation: changeBackgroundColor 5s infinite;
+}
+
+@keyframes changeBackgroundColor {
+  0% {
+    background-color: lightgreen;
+  }
+  25% {
+    background-color: darkgray;
+  }
+  50% {
+    background-color: lightpink;
+  }
+  75% {
+    background-color: lightgray;
+  }
+  100% {
+    background-color: lightblue;
+  }
+}

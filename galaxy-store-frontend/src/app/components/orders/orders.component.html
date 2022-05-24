@@ -1,0 +1,137 @@
+<section class="h-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-10 col-xl-10">
+        <div class="card" style="border-radius: 10px">
+          <div class="card-header px-4 py-3">
+            <h5 class="text-muted mb-0">Your Orders</h5>
+          </div>
+          <div class="card shadow-0 border mb-4 p-3">
+            <div class="card-body">
+              <div class="row" *ngFor="let item of orderList; let i = index">
+                <div
+                  class="col-md-1 text-center d-flex justify-content-center align-items-center"
+                >
+                  <p class="text-muted mb-0">#1025{{ i + 1 }}</p>
+                </div>
+                <div
+                  class="col-md-2 text-center d-flex justify-content-center align-items-center"
+                >
+                  <p class="text-muted mb-0">{{ item.title }}</p>
+                </div>
+                <div class="col-md-2">
+                  <img
+                    style="width: 80%"
+                    class="p-3"
+                    src="{{ item.image }}"
+                    alt="Phone"
+                  />
+                </div>
+                <div
+                  class="col-md-1 text-center d-flex justify-content-center align-items-center"
+                >
+                  <p class="text-muted mb-0 small">Qty: {{ item.quantity }}</p>
+                </div>
+                <div
+                  class="col-md-2 text-center d-flex justify-content-center align-items-center"
+                >
+                  <p class="text-muted mb-0 small">$ {{ item.price }}</p>
+                </div>
+                <div
+                  class="col-md-3 text-center d-flex justify-content-center align-items-center"
+                >
+                  <p class="text-muted mb-0 small">
+                    Ordered on : 22-02-2022 Delivered by : 10-03-2022
+                  </p>
+                </div>
+                <div
+                  class="col-md-1 text-center d-flex justify-content-center align-items-center"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#exampleModal1"
+                  >
+                    Track
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal1"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content text-white bg-dark" style="border-radius: 10px">
+      <div class="modal-header border-bottom-0">
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body text-start px-4 pt-0 pb-4">
+        <div class="text-center">
+          <h5 class="mb-3">Order Status</h5>
+          <h5 class="mb-5">AWB Number-5335T5S</h5>
+        </div>
+
+        <div class="d-flex justify-content-between mb-5">
+          <div class="text-center">
+            <i class="far fa-circle"></i>
+            <p class="lead fw-normal">Order placed</p>
+          </div>
+          <div class="text-center">
+            <i class="fas fa-circle"></i>
+            <p>In Transit</p>
+          </div>
+          <div class="text-center">
+            <i class="fas fa-circle"></i>
+            <p>Out of Delivery</p>
+          </div>
+          <div class="text-center">
+            <i class="fas fa-circle"></i>
+            <p>Delivered</p>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-md-4 text-center">
+            <p class="lead fw-normal">Shipped with</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <p class="lead fw-normal">DTDC Courier</p>
+          </div>
+          <div class="col-md-2 text-center">
+            <i class="fas fa-phone fa-lg"></i>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-md-4 text-center">
+            <p class="lead fw-normal">Estimated Delivery</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <p class="lead fw-normal">10/03/2022</p>
+          </div>
+          <div class="col-md-2 text-center">
+            <i class="fas fa-envelope fa-lg"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,194 @@
+<div class="login-container row my-4 p-2">
+  <div class="login-sidebar col col-2-5 sidebar-img bg-dark">
+    <span class="_36KMOx"
+      ><span>
+        <i style="font-size: 30px" class="fas fa-store">&nbsp; </i>
+        <a style="text-decoration: none; color: white" [routerLink]="['/home']"
+          ><strong style="font-size: 20px">Galaxy Store</strong></a
+        ></span
+      ></span
+    >
+    <p class="_1-pxlW">
+      <span>Get access to your Orders, Wishlist and Recommendations</span>
+    </p>
+  </div>
+  <div class="login-main col col-3-5">
+    <div>
+      <br />
+
+      <!-- Login Form -->
+      <form *ngIf="!flagForm">
+        <h3 class="text-center text-dark mb-2 fw-bold animated pulse">
+          {{ loginCaption }}
+        </h3>
+        <hr class="bg-primary" />
+        <div class="my-3">
+          <input
+            style="border: none; border-bottom: 1px solid #e0e0e0"
+            type="email"
+            class="form-control"
+            placeholder="Email"
+            #inputUser
+          />
+        </div>
+        <div class="my-3">
+          <input
+            style="border: none; border-bottom: 1px solid #e0e0e0"
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            #inputPass
+          />
+        </div>
+        <br />
+        <div class="d-flex justify-content-center">
+          <button
+            type="submit"
+            class="btn btn-dark px-3 w-100"
+            (click)="validateClassLogin(inputUser.value, inputPass.value)"
+          >
+            Login
+          </button>
+        </div>
+        <br />
+        <h6 class="mt-5 py-3">
+          <a
+            style="cursor: pointer; text-decoration: none"
+            class="text-primary"
+            (click)="changeFormLogin()"
+          >
+            New to Galaxy Store? {{ registerCaption }}</a
+          >
+        </h6>
+      </form>
+      <!-- end of login form -->
+
+      <!-- Register Form -->
+
+      <form *ngIf="flagForm" [formGroup]="registerForm">
+        <h3 class="text-center text-dark mb-2 fw-bold animated pulse">
+          {{ loginCaption }}
+        </h3>
+        <hr class="bg-primary" />
+
+        <div class="my-2">
+          <input
+            style="border: none; border-bottom: 1px solid #e0e0e0"
+            type="text"
+            class="form-control"
+            formControlName="name"
+            placeholder="Name"
+            #inputName
+          />
+          <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+            <div *ngIf="name?.errors?.['required']">
+              <p style="color: red; font-size: 12px">Name is required</p>
+            </div>
+          </div>
+        </div>
+        <div class="my-2">
+          <input
+            style="border: none; border-bottom: 1px solid #e0e0e0"
+            type="text"
+            class="form-control"
+            formControlName="email"
+            placeholder="Email"
+            #inputRUser
+          />
+          <div
+            *ngIf="username?.invalid && (username?.dirty || username?.touched)"
+          >
+            <div *ngIf="username?.errors?.['required']">
+              <p style="color: red; font-size: 12px">Email is required</p>
+            </div>
+            <div *ngIf="username?.errors?.['email']">
+              <p style="color: red; font-size: 12px">Invalid Email</p>
+            </div>
+          </div>
+        </div>
+        <div class="my-2">
+          <input
+            style="border: none; border-bottom: 1px solid #e0e0e0"
+            type="text"
+            class="form-control"
+            formControlName="phone"
+            placeholder="Phone"
+            #inputPhone
+          />
+          <div
+            *ngIf="
+              userPhone?.invalid && (userPhone?.dirty || userPhone?.touched)
+            "
+          >
+            <div *ngIf="userPhone?.errors?.['required']">
+              <p style="color: red; font-size: 12px">
+                Phone number is required
+              </p>
+            </div>
+            <div *ngIf="userPhone?.errors?.['minlength']">
+              <p style="color: red; font-size: 12px">
+                Enter a valid phone number
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="my-2">
+          <input
+            style="border: none; border-bottom: 1px solid #e0e0e0"
+            type="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Password"
+            #inputRPass
+          />
+          <div
+            *ngIf="
+              userPassword?.invalid &&
+              (userPassword?.dirty || userPassword?.touched)
+            "
+          >
+            <div *ngIf="userPassword?.errors?.['required']">
+              <p style="color: red; font-size: 12px">Password is required</p>
+            </div>
+            <div *ngIf="userPassword?.errors?.['minlength']">
+              <p style="color: red; font-size: 12px">
+                Password length should be minimum six
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="my-2">
+          <input
+            style="border: none; border-bottom: 1px solid #e0e0e0"
+            type="password"
+            class="form-control"
+            formControlName="confirmPassword"
+            placeholder="Confirm Password"
+            #inputRConfirmPass
+          />
+        </div>
+        <br />
+        <div class="d-flex justify-content-center mt-1">
+          <button
+            type="submit"
+            [disabled]="registerForm.invalid"
+            class="btn btn-dark px-3 w-100"
+            (click)="addNewUser()"
+          >
+            Register
+          </button>
+        </div>
+        <br />
+        <h6 class="mt-1 py-1">
+          <a
+            style="cursor: pointer; text-decoration: none"
+            class="text-primary"
+            (click)="changeFormLogin()"
+          >
+            Existing User? {{ registerCaption }}</a
+          >
+        </h6>
+      </form>
+    </div>
+  </div>
+</div>

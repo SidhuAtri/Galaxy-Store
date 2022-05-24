@@ -1,0 +1,27 @@
+<div class="container table-responsive py-5 m-5 bg-light">
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Products</th>
+        <th scope="col">Price</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userDetails">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.title.substring(0, 15) }}...</td>
+        <td>${{ user.price }}</td>
+        <td>
+          <button class="btn-primary btn me-3">View More</button>
+          <button class="btn-warning btn">Print</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
